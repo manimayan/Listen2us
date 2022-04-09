@@ -1,7 +1,7 @@
 ## About The Project
 
 ### listen2us-Social Welfare Platform
-Listen2Us is a social issue addressing tool on the baseline which can benefit the society digitally.This tool provides the management of public issues  which can be
+Listen2us is a social issue addressing tool on the baseline which can benefit the society digitally.This tool provides the management of public issues  which can be
 resolved by the local governing body provided the concern is raised by the people who belong to the respective society.
 
 #### Mission 
@@ -15,7 +15,7 @@ governing body.
 To have a healthy society in terms of environment, administration and people welfare. 
 
 
-### FACES of Application
+### FACES of the Application
 
 #### People
 The application is designed to have a portal for public people who can login, post the issues, view the issue status and the information about their constitution.
