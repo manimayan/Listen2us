@@ -1,0 +1,4 @@
+rootProject.name = 'listen2us'
+
+include 'listen2us-core'
+include 'listen2us-web'

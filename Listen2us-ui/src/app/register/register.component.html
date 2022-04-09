@@ -1,0 +1,138 @@
+<ngx-spinner
+bdColor = "rgba(97,98,102,0.8)"
+size = "large"
+color = "#2e80ab"
+type = "line-scale-pulse-out"><br><br><br>
+<p *ngIf="spinnerFlag" style="font-size: 20px; color: white">Checking for the user...</p>
+<p *ngIf="!spinnerFlag" style="font-size: 20px; color: white">Registering...</p></ngx-spinner>
+<div class="container">
+<div class="p-grid">
+<div class="p-col-2"></div>
+<div class="p-col-8">
+<p-toast [style]="{marginTop: '58px'}" position="top-center"></p-toast>
+<p-tabView>
+  <p-tabPanel header="User" [selected]="true">
+    <div class="p-grid">
+    <div class="p-col-12"> 
+    <p-steps [model]="items"  [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+    </div>
+    <div class="p-col-12">
+    <ng-template [ngIf]= "primary">
+          <div class="p-grid">
+            <div class="p-col-3"> </div>
+            <div class="p-col-6 primarydetails-dimension"> 
+                  <form [formGroup]="primarydetailsForm" (ngSubmit)="onSubmitReg()">
+                             <div class="p-grid" id="login-user">
+                                  <div class="p-col-12 input-group mb-3">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                          </div>
+                                          <input type="text" class="form-control form-control-sm" formControlName="userName" placeholder="User name"  [ngClass]="{ 'is-invalid': submittedReg && getreg.userName.errors }" />
+                                          <div *ngIf="submittedReg && getreg.userName.errors" class="invalid-feedback">
+                                            <div *ngIf="getreg.userName.errors">User Name is required / Please check the format</div>
+                                            <div *ngIf="getreg.userName.errors.minlength">User Name must be atleast 4 characters</div>
+                                        </div>
+                                        </div>
+                                         <div class="p-col-12 input-group mb-3 displayinline">      
+                                              <div class="input-group-prepend">
+                                                <span id="no-border" class="input-group-text"><i class="fa fa-lock"></i></span></div>
+                                                <input id="pass" type="password" class="form-control form-control-sm" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submittedReg && getreg.password.errors }" >
+                                                <div *ngIf="submittedReg && getreg.password.errors" class="invalid-feedback">
+                                                  <div *ngIf="getreg.password.errors.required">Password is required</div>
+                                                  <div *ngIf="getreg.password.errors.minlength">Password must be atleast 6 characters</div>
+                                              </div>   
+                                          </div>
+                                          <div class="p-col-12 input-group mb-3 displayinline">      
+                                              <div class="input-group-prepend">
+                                                <span id="no-border" class="input-group-text"><i class="fa fa-lock"></i></span></div>
+                                                <input id="passconfirm" type="password" class="form-control form-control-sm" formControlName="confirmPassword" placeholder="Confirm Password">   
+                                          </div>
+                                  
+                                      <div class="p-col-4"></div>
+                                      <div class="p-col-4">
+                                            <button type="submit" class="btn btn-primary btn-sm login">Check for User</button>
+                                        </div>
+                                        <div class="p-col-4"></div>
+                             </div>
+                          </form>
+                      </div>
+                      <div class="p-col-3">
+                    </div>
+                  </div>                               
+    </ng-template>
+    <ng-template [ngIf]= "secondary">
+            <div class="p-grid">
+            <div class="p-col-1"></div>
+            <div class="p-col-10"> 
+                    <div class="alert alert-light" role="alert">
+                            Please enter the details for the username <b>{{newUser}}</b>
+                          </div>
+            </div>
+            <div class="p-col-1"></div>
+             </div>
+        <div class="p-grid">
+            <div class="p-col-1"></div> 
+            <div class="p-col-10 authentication-dimension"> 
+                <form [formGroup]="secondarydetailsForm" (ngSubmit)="onSubmitUsrdet()">
+                           <div class="p-grid" id="login-user">
+                                <div class="p-col-12">
+                                    <div class="p-grid">
+                                      <div class="p-col-6"><input type="text" class="form-control form-control-sm" formControlName="firstName" placeholder="First name *"  [ngClass]="{ 'is-invalid': submittedUsrdet && getusrdet.firstName.errors }" required>
+                                      <div *ngIf="submittedUsrdet && getusrdet.firstName.errors" class="invalid-feedback">
+                                            <div *ngIf="getusrdet.firstName.errors">Only characters are allowed</div>
+                                        </div></div>
+                                      <div class="p-col-6"><input type="text" class="form-control form-control-sm" formControlName="lastName" placeholder="Last name *" [ngClass]="{ 'is-invalid': submittedUsrdet && getusrdet.lastName.errors }" required>
+                                      <div *ngIf="submittedUsrdet && getusrdet.lastName.errors" class="invalid-feedback">
+                                            <div *ngIf="getusrdet.lastName.errors">Only characters are allowed</div>
+                                        </div></div>
+                                    </div>
+                                </div>
+                                <div class="p-col-12">
+                                    <div class="p-grid">
+                                      <div class="p-col-6"><p-dropdown [autoWidth]="true" [style]="{'width': '100%'}"  [options]="gender" formControlName="gender" [(ngModel)]="selectedGender" placeholder="Select a gender *" optionLabel="name" required></p-dropdown></div>
+                                      <div class="p-col-6"><p-calendar [autoWidth]="true" [style]="{'width': '95%'}" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1980:2010" [inputStyle]="{'width':'95%'}" formControlName="dob"  [(ngModel)]="dob" placeholder="Select your dob *" [showIcon]="true" required></p-calendar></div>
+                                    </div>
+                                </div>
+                                <div class="p-col-12">
+                                    <div class="p-grid">
+                                      <div class="p-col-6"><p-dropdown [autoWidth]="true" [style]="{'width': '100%'}" [options]="wardNos" formControlName="wardNo" [(ngModel)]="selectedWard" placeholder="Select a ward *" optionLabel="name" required></p-dropdown></div>
+                                      <div class="p-col-6"><p-dropdown  [autoWidth]="true" [style]="{'width': '100%'}"  [options]="streets" formControlName="street" [(ngModel)]="selectedStreet" placeholder="Select a street *" optionLabel="name" required></p-dropdown></div>
+                                    </div>
+                                </div>
+                                <div class="p-col-12">
+                                    <div class="p-grid">
+                                        <div class="p-col-6"><input type="text" class="form-control form-control-sm" formControlName="email" placeholder="Email *" [ngClass] = "{ 'is-invalid' :submittedUsrdet && getusrdet.email.errors }" required>
+                                        <div *ngIf="submittedUsrdet && getusrdet.email.errors" class="invalid-feedback">
+                                                Not a valid email</div>
+                                            </div>
+                                        <div class="p-col-3"><button type="submit" class="btn btn-primary btn-sm login">Create an Account</button></div>
+                                        <div class="p-col-3"><button type="button" onclick="reset()" class="btn btn-primary btn-sm login">reset</button></div>
+                                      </div>
+                                </div>
+                                <input type = "hidden" class="form-control" formControlName="userName" />
+                                <input type = "hidden" class="form-control" formControlName="password" />
+
+                           </div>
+                        </form>
+                    </div>
+                    <div class="p-col-1"></div> 
+                </div>
+        <div class="p-grid">
+            <div class="p-col-6 mandate">* All fields are mandatory</div>
+            <div class="p-col-6"></div>
+        </div>  
+    </ng-template>
+    </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Councillor">
+  </p-tabPanel>
+</p-tabView>
+</div>
+<div class="p-col-2"></div>
+</div>
+</div>
+
+
+
+

@@ -1,0 +1,99 @@
+
+    <div class="container-fluid blur-background">
+            <p-dialog header="Listen Us - Online Complaint portal" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+            [maximizable]="true" [baseZIndex]="10000">
+        <span class="">It's a web based application to address the social needs in the digital way.</span>
+    </p-dialog>
+    <p-toast [style]="{marginTop: '58px'}" position="top-center"></p-toast>
+        <div class="p-grid">
+        <div class="p-col-3"></div>
+        <div class="p-col-5 authentication-dimension">
+            <div id="tabs">
+                <span><a><button type="button" id="login-nav-user" class="p-col-6 btn nav-style active">User</button></a></span>
+                <span><button type="button" id="login-nav-councillor" class="p-col-6 btn nav-style">Councillor</button></span>
+            </div>
+            <br>    
+            <form [formGroup]="loginuserForm" (ngSubmit)="onSubmit()">
+                       <div class="p-grid" id="login-user">
+                            <div class="p-grid">
+                            <div class="p-col-2"></div>
+                            <div class="p-col-8 input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" formControlName="userName" placeholder="User name" aria-label="Username" aria-describedby="basic-addon1">
+                                  </div>
+                                  <div class="p-col-2"><input type = "hidden" class="form-control" formControlName="userType" /></div>
+                            </div>
+                            <div class="p-grid">
+                                    <div class="p-col-2"></div>
+                                   <div class="p-col-8 input-group mb-3 displayinline">      
+                                        <div class="input-group-prepend">
+                                          <span id="no-border" class="input-group-text"><i class="fa fa-lock"></i></span>
+                                          <input id="pass" type="password" class="form-control" formControlName="password" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div><a href=""><small class="forgot">Forgot Password?</small></a></div> 
+                                    </div>
+                                        <div class="p-col-2"></div>
+                                </div>
+                            <div class="p-grid">
+                               <div class="p-col-5"></div>
+                               <div class="p-col-4">
+                                    <button type="submit" [disabled]="!loginuserForm.valid" class="btn btn-primary login">Login</button>
+                                </div>
+                            <div class="p-col-3"></div> 
+                            </div>
+                            <div class="p-grid">
+                                    <div class="p-col-3"></div>
+                                    <div class="p-col-7">
+                                            <small class="medulla create-one">Don't have an account? <a routerLink ="/register"><b class="create-one">Create Now!</b></a></small>
+                                     </div>
+                                     <div class="p-col-2"><button type="button" (click)="showDialog()" class="btn"><i class="fa fa-info-circle" style="font-size:18px"></i></button></div>
+                            </div>                              
+                       </div>
+                    </form>
+   
+                    <form [formGroup]="loginconForm" (ngSubmit)="onSubmit()">
+                        <div class="p-grid" id="login-councillor">
+                                <div class="p-grid">
+                                        <div class="p-col-2"></div>
+                                        <div class="p-col-8 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" formControlName="userName" placeholder="Councillor name" aria-label="Username" aria-describedby="basic-addon1">
+                                              </div>
+                                              <div class="p-col-2"></div>
+                                        </div>
+                                        <div class="p-grid">
+                                                <div class="p-col-2"></div>
+                                               <div class="p-col-8 input-group mb-3 displayinline">      
+                                                    <div class="input-group-prepend">
+                                                      <span id="no-border" class="input-group-text"><i class="fa fa-lock"></i></span>
+                                                      <input id="conpass" type="password" class="form-control" formControlName="password" placeholder="Password" aria-label="conPassword" aria-describedby="basic-addon1">
+                                                    </div>
+                                                    <div><a href=""><small class="forgot">Forgot Password?</small></a></div> 
+                                                </div>
+                                                    <div class="p-col-2"><input type = "hidden" class="form-control" formControlName="userType" /></div>
+                                            </div>
+                                           <div class="p-grid">
+                                           <div class="p-col-5"></div>
+                                           <div class="p-col-4">
+                                                <button type="submit" [disabled]="!loginconForm.valid" class="btn btn-primary login">Login</button>
+                                            </div>
+                                        <div class="p-col-3"></div> 
+                                        </div> 
+                                        <div class="p-grid">
+                                                <div class="p-col-3"></div>
+                                                <div class="p-col-7">
+                                                        <small class="medulla create-one">Don't have an account? <a href=""><b class="create-one">Create Now!</b></a></small>
+                                                 </div>
+                                                 <div class="p-col-2"><button type="button" (click)="showDialog()" class="btn"><i class="fa fa-info-circle" style="font-size:18px"></i></button></div>
+                                        </div>    
+                        </div>
+                    </form>
+                </div>
+                <div class="p-col-4"></div>
+            </div>    
+        </div>          
+     

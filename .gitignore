@@ -1,0 +1,42 @@
+HELP.md
+.gradle
+listen2us-core/build/
+listen2us-web/build/
+listen2us-core/bin/
+listen2us-web/bin/
+Listen2us-ui/node_modules
+bin/
+build
+.gradle/
+.settings/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+gradle.properties
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+.metadata
+

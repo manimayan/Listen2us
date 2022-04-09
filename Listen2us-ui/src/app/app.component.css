@@ -1,0 +1,27 @@
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#adjacentsidebar {
+    background-color: gainsboro;
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#content {
+    padding: 20px 40px 0px 40px;
+    
+}
+
+
+p {
+    
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+

@@ -1,0 +1,74 @@
+<ngx-spinner
+bdColor = "rgba(97,98,102,0.8)"
+size = "large"
+color = "#2e80ab"
+type = "line-scale-pulse-out"><br><br><br><p style="font-size: 20px; color: white">Listening...</p></ngx-spinner>
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Registered Complaint" width="700">
+        
+        <p-footer>
+        <div class="p-grid">
+                <div class="p-col-4"><label class="labelStyle">Title : </label></div>
+                <div class="p-col-8"><span class="confirm">{{title}}</span></div>
+                
+                <div class="p-col-4"><label class="labelStyle">Category : </label></div>
+                <div class="p-col-8"><span class="confirm">{{selectedCategory ? selectedCategory.name : 'none'}}</span></div>
+               
+                <div class="p-col-4"><label class="labelStyle">Problem existing from :</label></div>
+                <div class="p-col-8"><span class="confirm">{{problemDate}}</span></div>
+               
+                <div class="p-col-4"><label class="labelStyle">Street :</label></div>
+                <div class="p-col-8"><span class="confirm">{{selectedStreet ? selectedStreet.name : 'none'}}</span></div>
+             
+                <div class="p-col-4"><label class="labelStyle">Ward :</label></div>
+                <div class="p-col-8"><span class="confirm">{{selectedWard ? selectedWard.name : 'none'}}</span></div>
+            
+                <div class="p-col-4"><label class="labelStyle">Reason / Cause :</label></div>
+                <div class="p-col-8"><span class="confirm">{{reason}}</span></div>
+              
+                  <div class="p-col-4"><label class="labelStyle">Comments :</label></div>
+                <div class="p-col-8"><span class="confirm">{{comment}}</span></div>
+                
+            </div>
+       
+    
+        <button type="button" pButton ></button>
+    </p-footer>
+</p-confirmDialog>
+<div class="reg-complaint-dimension">
+<form [formGroup]="ComplaintForm" (ngSubmit)="onSubmit(ComplaintForm.value)">
+    <p-panel>
+        <p-header>
+            <div class="ui-helper-clearfix">
+                <span class="ui-panel-title labelStyle" style="font-size:16px;font-weight:bold;display:inline-block;margin-top:2px">Register a Complaint</span>
+                <button pButton type="submit" style="float:right;" label="Submit a Complaint"  [disabled]="!ComplaintForm.valid" class="ui-button-raised"></button>            
+            </div>
+        </p-header>
+    <br>
+   <div class="p-grid">
+    <div class="p-col-3"><label class="labelStyle">Title : </label>&nbsp;<sup class="superscript">*</sup></div>
+    <div class="p-col-6"><input type="text" pInputText style="width:60%;" formControlName="problemtitle" pTooltip="Please provide the problem description in 20 words." [(ngModel)]="title" required/></div>
+    <div class="p-col-3"></div>
+    <div class="p-col-3"><label class="labelStyle">Category :</label>&nbsp;<sup class="superscript">*</sup></div>
+    <div class="p-col-6"><p-dropdown  [autoWidth]="true" [style]="{'width': '60%'}" [options]="Categories" formControlName="problemcategory" [(ngModel)]="selectedCategory" placeholder="Select a Category" optionLabel="name" required></p-dropdown></div>
+    <div class="p-col-3"></div>
+    <div class="p-col-3"><label class="labelStyle">Problem existing from :</label>&nbsp;<sup class="superscript">*</sup></div>
+    <div class="p-col-6"><p-calendar [autoWidth]="true" [style]="{'width':'56%'}" [inputStyle]="{'width':'95%'}" formControlName="problemDates"  [(ngModel)]="problemDate" [showIcon]="true" required></p-calendar></div>
+    <div class="p-col-3"></div>
+    <div class="p-col-3"><label class="labelStyle">Ward :</label>&nbsp;<sup class="superscript">*</sup></div>
+    <div class="p-col-6"> <p-dropdown [autoWidth]="true" [style]="{'width': '60%'}" [options]="Wards" formControlName="activeward" [(ngModel)]="selectedWard" placeholder="Select a Ward" optionLabel="name" required></p-dropdown></div>
+    <div class="p-col-3"></div>
+    <div class="p-col-3"><label class="labelStyle">Street :</label>&nbsp;<sup class="superscript">*</sup></div>
+    <div class="p-col-6"><p-dropdown [autoWidth]="true" [style]="{'width': '60%'}" [options]="Streets" formControlName="activestreet" [(ngModel)]="selectedStreet" placeholder="Select a Street" optionLabel="name" required></p-dropdown></div>
+    <div class="p-col-3"></div>
+    <div class="p-col-3"><label class="labelStyle">Reason / Cause :</label>&nbsp;<sup class="superscript">*</sup></div>
+    <div class="p-col-6"><textarea pInputTextarea style="width:100%;" formControlName="reasons" [(ngModel)]="reason" required></textarea></div>
+    <div class="p-col-3"></div>
+    <div class="p-col-3"><label class="labelStyle">Comments :</label></div>
+    <div class="p-col-6"><textarea pInputTextarea style="width:100%;"  formControlName="comments" [(ngModel)]="comment"></textarea></div>
+    <div class="p-col-3"></div>
+</div>
+    </p-panel>
+   
+</form>
+</div>

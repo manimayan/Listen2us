@@ -1,0 +1,48 @@
+    <!-- Sidebar  -->
+    <nav  *ngIf="nav.visible" id="sidebar">
+        <div class="p-grid p-dir-col product">
+                <div class="p-col product-name">Listen Us</div>
+            </div>
+        <div class="sidebar-header">
+            
+            <div class="user-picture"></div>
+            <div class="user-name">
+                <span class="first">{{firstName}}</span>
+                <span class="last">&nbsp;{{lastName}}</span>
+            </div>
+        </div>
+  
+        <ul class="list-unstyled components">
+            <li class="menu">
+                  <a routerLink="/">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </li>
+            <li class="menu">
+                <a routerLink ="/reg-comp">
+                    <i class="fas fa-briefcase"></i>
+                    Register a complaint
+                </a>
+                </li>
+                <li class="menu">
+                <a routerLink ="view-comp">
+                    <i class="fas fa-copy"></i>
+                    View complaints
+                </a>
+            </li>
+            <li class="menu">
+                <a routerLink ="/ward-det">
+                    <i class="fas fa-image"></i>
+                    Ward Details
+                </a>
+            </li>
+        </ul>
+   
+        <div class="Sign-out">
+            
+            <button  (click)="onLogout()" type="button" class="btn btn-secondary sign-button">Logout</button>
+            <button  (click)="onLogout()" type="button" id="signout-icon"class="btn btn-secondary"><i class="fa fa-power-off"></i></button>
+            
+          </div>
+    </nav>

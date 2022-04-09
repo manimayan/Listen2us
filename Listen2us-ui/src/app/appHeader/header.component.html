@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <div class="p-grid cont">
+      <div  class="p-col-4 reduceheader">
+        <button  type="button" id="sidebarCollapse" class="btn btn-info hamburger" [hidden]="nav.headertitle">
+          <i class="fa fa-bars"></i>
+        </button>
+        </div>
+       
+        <div [hidden]="!nav.headertitle" class="p-col-6">
+          <div class="titlelogin">
+            <img class="banner-img-img"src="../assets/images/listen_us.png">
+          <span class="tool-title"><strong>&nbsp;&nbsp;Listen Us</strong></span></div>
+        </div>
+ 
+    
+        <div [hidden]="nav.headertitle" class="p-col-6 title reduceheader">
+              <img class="banner-img-img-m"src="../assets/images/listen_us.png">
+            <span class="tool-title-m"><strong>&nbsp;&nbsp;Online Complaint portal</strong></span>
+          </div>
+        <div class="p-col-2 reduceheader"></div>
+   </div>
+    
+</nav>
